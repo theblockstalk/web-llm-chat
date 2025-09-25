@@ -14,6 +14,7 @@ import DragIcon from "../icons/drag.svg";
 import LightIcon from "../icons/light.svg";
 import DarkIcon from "../icons/dark.svg";
 import AutoIcon from "../icons/auto.svg";
+import Image from "next/image";
 
 import Locale from "../locales";
 
@@ -147,7 +148,7 @@ export function SideBar(props: { className?: string }) {
 
   const { theme } = config;
   function nextTheme() {
-    const themes = [Theme.Auto, Theme.Light, Theme.Dark];
+    const themes = [Theme.TonomyBlackmode, Theme.Auto, Theme.Light, Theme.Dark];
     const themeIndex = themes.indexOf(theme);
     const nextIndex = (themeIndex + 1) % themes.length;
     const nextTheme = themes[nextIndex];
@@ -169,12 +170,12 @@ export function SideBar(props: { className?: string }) {
           <div className={styles["sidebar-title"]}>{Locale.Title}</div>
           <div className={styles["sidebar-sub-title"]}>{Locale.Subtitle}</div>
         </div>
-        <div className={styles["sidebar-logo"] + " no-dark mlc-icon"}>
-          <MlcIcon />
+        <div className={styles["sidebar-logo"] + " no-dark tonomy-icon"}>
+          <Image src="/tonomy-logo.png" alt="Tonomy" width={28} height={28} />
         </div>
       </div>
 
-      <div className={styles["sidebar-header-bar"]}>
+      {/* <div className={styles["sidebar-header-bar"]}>
         <IconButton
           icon={<TemplateIcon />}
           text={shouldNarrow ? undefined : Locale.Template.Name}
@@ -193,7 +194,7 @@ export function SideBar(props: { className?: string }) {
           }}
           shadow
         />
-      </div>
+      </div> */}
 
       <div
         className={styles["sidebar-body"]}
@@ -223,16 +224,23 @@ export function SideBar(props: { className?: string }) {
               <IconButton icon={<InternetIcon />} shadow />
             </a>
           </div>
-          <div className={styles["sidebar-action"]}>
+          {/* <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
               <IconButton icon={<GithubIcon />} shadow />
             </a>
-          </div>
-          <div className={styles["sidebar-action"]}>
+          </div> */}
+          {/* <div className={styles["sidebar-action"]}>
             <IconButton
               icon={
                 <>
-                  {theme === Theme.Auto ? (
+                  {theme === Theme.TonomyBlackmode ? (
+                    <Image
+                      src="/tonomy-logo.png"
+                      alt="Tonomy"
+                      width={16}
+                      height={16}
+                    />
+                  ) : theme === Theme.Auto ? (
                     <AutoIcon />
                   ) : theme === Theme.Light ? (
                     <LightIcon />
@@ -244,7 +252,7 @@ export function SideBar(props: { className?: string }) {
               onClick={nextTheme}
               shadow
             />
-          </div>
+          </div> */}
         </div>
         <div>
           <IconButton
